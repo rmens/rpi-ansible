@@ -18,5 +18,5 @@
 - name: Clean old Chrome installs
   lineinfile:
     path: /etc/xdg/lxsession/LXDE-pi/autostart
-	regexp: '^chromium-browser'
-	state: absent
+    regexp: '^chromium-browser'
+    state: absent
