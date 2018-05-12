@@ -14,4 +14,9 @@
     - "@xset s noblank"
     - "@xset s off"
     - "@xset -dpms"
-    - "chromium-browser {{ chrome_url }}"
+
+- name: Clean old Chrome installs
+  lineinfile:
+    path: /etc/xdg/lxsession/LXDE-pi/autostart
+	regexp: '^chromium-browser'
+	state: absent
