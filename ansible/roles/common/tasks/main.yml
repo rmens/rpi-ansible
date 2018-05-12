@@ -1,0 +1,43 @@
+---
+- name: Update APT cache
+  apt: update_cache=yes
+  
+- name: Remove unused packages
+  apt: name="{{ item }}" state=absent force=yes
+  with_items:
+    - wolfram-engine
+    - "libreoffice*"
+    - bluej
+
+- name: Update all packages to the latest version
+  apt: upgrade=dist
+
+- name: Install common packages
+  apt: name="{{ item }}" state=present force=yes
+  with_items:
+    - git
+    - curl
+    - apt-transport-https
+    - rsync
+    - python-passlib
+    - nfs-common
+    - subversion
+    - unzip
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
+
+- name: ensure github.com is a known host
+  lineinfile:
+    dest: /etc/ssh/ssh_known_hosts
+    create: yes
+    state: present
+    line: "{{ lookup('pipe', 'ssh-keyscan -t rsa github.com') }}" # The command is executed locally to prevent an MITM attack. See http://hakunin.com/six-ansible-practices#path-to-success-1
+    regexp: "^github\\.com"
+
+- include: ntp.yml
+
+- include: sshsecurity.yml
+
+- include: firewall.yml

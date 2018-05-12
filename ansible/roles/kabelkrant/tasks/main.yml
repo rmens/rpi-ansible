@@ -1,0 +1,17 @@
+---
+- name: Install packages
+  apt: name="{{ item }}" state=latest force=yes
+  with_items:
+    - chromium-browser
+    - unclutter
+    - ttf-mscorefonts-installer
+
+- name: Disable screensaver
+  lineinfile:
+    path: /etc/xdg/lxsession/LXDE-pi/autostart
+    line: "{{ item }}"
+  with_items:
+    - "@xset s noblank"
+    - "@xset s off"
+    - "@xset -dpms"
+    - "chromium-browser {{ chrome_url }}"

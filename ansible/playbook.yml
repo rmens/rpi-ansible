@@ -1,0 +1,16 @@
+---
+- hosts: all
+  remote_user: pi
+  become: yes
+  vars_files:
+    - ../private/vars.yml
+  roles:
+    - common
+
+- hosts: kabelkrant
+  remote_user: pi
+  become: yes
+  vars_files:
+    - ../private/vars.yml
+  roles:
+    - kabelkrant

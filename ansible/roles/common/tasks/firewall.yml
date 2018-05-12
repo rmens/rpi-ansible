@@ -1,0 +1,9 @@
+- name: Install ufw package
+  apt: name=ufw state=latest force=yes
+
+- name: Open all ports
+  ufw: state=enabled policy=allow
+
+- name: Close port 111
+  ufw: rule=deny port=111 interface=eth0 direction=in
+  notify: restart ufw

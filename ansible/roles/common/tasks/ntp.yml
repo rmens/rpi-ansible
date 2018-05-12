@@ -1,0 +1,12 @@
+---
+- name: Install ntpdate
+  apt: name=ntpdate state=present force=yes
+
+- name: Set timezone to Europe/Amsterdam
+  copy: content='Europe/Amsterdam' dest=/etc/timezone owner=root group=root mode=0644 backup=yes
+
+- name: Update tzdata
+  command: dpkg-reconfigure --frontend noninteractive tzdata
+
+- name: Sync with XS4ALL NTP server
+  command: ntpdate ntp.xs4all.nl

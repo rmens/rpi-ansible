@@ -1,0 +1,21 @@
+---
+- name: Disallow root SSH access
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^PermitRootLogin" line="PermitRootLogin no" state=present
+
+- name: Don't use DNS
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^UseDNS" line="UseDNS no" state=present
+
+- name: Copy pre-login banner
+  copy: src=sshbanner dest=/etc/issue.net
+ 
+- name: Enable pre-login SSH banner
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^Banner" line="Banner /etc/issue.net" state=present
+
+- name: Change ssh port
+  lineinfile: dest=/etc/ssh/sshd_config
+      regexp="^Port\s"
+      line="Port 228"
+      state=present
+
+- name: restart sshd
+  service: name=ssh state=restarted enabled=true
