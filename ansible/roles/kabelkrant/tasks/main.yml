@@ -20,3 +20,8 @@
     path: /etc/xdg/lxsession/LXDE-pi/autostart
     regexp: '^chromium-browser'
     state: absent
+
+- name: Enable fullscreen Chrome
+  lineinfile:
+    path: /etc/xdg/lxsession/LXDE-pi/autostart
+    line: "chromium-browser {{ chrome_url }}"
