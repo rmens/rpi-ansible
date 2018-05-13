@@ -24,4 +24,4 @@
 - name: Enable fullscreen Chrome
   lineinfile:
     path: /etc/xdg/lxsession/LXDE-pi/autostart
-    line: "chromium-browser {{ chrome_url }}"
+    line: "chromium-browser {{ chrome_url }}  --incognito --kiosk --disable-dialogs --noerrdialogs --disable-session-crashed-bubble --disable-infobars"
