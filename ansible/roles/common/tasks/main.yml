@@ -20,6 +20,9 @@
     - minecraft-pi
     - galculator
     - xpdf
+    - oracle-java8-jdk
+    - bluez
+    - epiphany-browser
 
 - name: Update all packages to the latest version
   apt: upgrade=dist

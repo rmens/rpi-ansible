@@ -6,3 +6,8 @@
 
 - name: Disable splash image
   systemd: name=plymouth-start.service state=stopped enabled=no masked=yes
+
+- name: No warnings
+  lineinfile:
+    path: /boot/config.txt
+    line: "avoid_warnings=1"
