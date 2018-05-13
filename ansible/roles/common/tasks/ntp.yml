@@ -3,7 +3,7 @@
   apt: name=ntpdate state=present force=yes
 
 - name: Set timezone to Europe/Amsterdam
-  copy: content='Europe/Amsterdam' dest=/etc/localtime owner=root group=root mode=0644 backup=yes
+  file: src='/usr/share/zoneinfo/Europe/Amsterdam' dest=/etc/localtime state=link force=yes
 
 - name: Update tzdata
   command: dpkg-reconfigure --frontend noninteractive tzdata
