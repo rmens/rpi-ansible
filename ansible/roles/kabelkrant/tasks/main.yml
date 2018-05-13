@@ -8,7 +8,7 @@
 
 - name: Disable screensaver
   lineinfile:
-    path: /etc/xdg/lxsession/LXDE-pi/autostart
+    path: /home/pi/.config/lxsession/LXDE-pi/autostart
     line: "{{ item }}"
   with_items:
     - "@xset s noblank"
@@ -17,13 +17,13 @@
 
 - name: Clean old Chrome installs
   lineinfile:
-    path: /etc/xdg/lxsession/LXDE-pi/autostart
+    path: /home/pi/.config/lxsession/LXDE-pi/autostart
     regexp: '^chromium-browser'
     state: absent
 
 - name: Enable fullscreen Chrome
   lineinfile:
-    path: /etc/xdg/lxsession/LXDE-pi/autostart
+    path: /home/pi/.config/lxsession/LXDE-pi/autostart
     line: "chromium-browser {{ chrome_url }}  --incognito --kiosk --disable-dialogs --noerrdialogs --disable-session-crashed-bubble --disable-infobars"
 
 - include: screensetup.yml
