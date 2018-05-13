@@ -1,0 +1,10 @@
+---
+- name: Disable wifi
+  lineinfile:
+    path: /boot/config.txt
+    line: "dtoverlay=pi3-disable-wifi"
+
+- name: Disable bluetooth
+  lineinfile:
+    path: /boot/config.txt
+    line: "dtoverlay=pi3-disable-bt"

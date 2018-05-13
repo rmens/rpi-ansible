@@ -8,6 +8,18 @@
     - wolfram-engine
     - "libreoffice*"
     - bluej
+    - geany
+    - greenfoot
+    - nodered
+    - idle
+    - idle3
+    - scratch
+    - sonic-pi
+    - python3-thonny
+    - claws-mail
+    - minecraft-pi
+    - galculator
+    - xpdf
 
 - name: Update all packages to the latest version
   apt: upgrade=dist
@@ -41,3 +53,7 @@
 - include: sshsecurity.yml
 
 - include: firewall.yml
+
+- include: silentboot.yml
+
+- include: disablebtwifi.yml

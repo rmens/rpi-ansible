@@ -1,0 +1,5 @@
+---
+- name: No overscan
+  lineinfile:
+    path: /boot/config.txt
+    line: "disable_overscan=1"

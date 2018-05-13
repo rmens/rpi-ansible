@@ -1,0 +1,8 @@
+---
+- name: Disable rainbow image at boot
+  lineinfile:
+    path: /boot/config.txt
+    line: "disable_splash=1"
+
+- name: Disable splash image
+  systemd: name=plymouth-start.service state=stopped enabled=no masked=yes
