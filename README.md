@@ -1,5 +1,6 @@
 # rpi-ansible
-Ansible configuration for using a Raspberry Pi as narrowcasting screen. It boots a full screen Chrome that can dispay any dynamic content on a webpage.
+Ansible configuration for using a Raspberry Pi as narrowcasting screen. It boots a full screen Chrome that can dispay any dynamic content on a webpage. I use it with: https://github.com/rmens/kabelkrant
+
 ## How to use:
 * Install a clean version of 2018-11-13-raspbian-stretch
 * Configure host in ```hosts.inv``` and set ```chrome_url```
