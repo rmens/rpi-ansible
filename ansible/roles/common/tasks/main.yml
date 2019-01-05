@@ -23,6 +23,8 @@
     - oracle-java8-jdk
     - bluez
     - epiphany-browser
+    - scratch2
+    - minecraft-pi
 
 - name: Update all packages to the latest version
   apt: upgrade=dist
