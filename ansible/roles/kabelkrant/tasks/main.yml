@@ -16,8 +16,15 @@
     owner: pi
     group: pi
 
+- name: Get Cleartype fonts
+  get_url:
+    url: http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer
+    dest: /etc/fonts-installer
+    owner: pi
+    group: pi
+
 - name: Install Cleartype fonts
-  shell: wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | bash
+  script: /etc/fonts-installer
 
 - name: Clean old Chrome installs
   lineinfile:
