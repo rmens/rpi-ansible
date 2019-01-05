@@ -5,6 +5,19 @@
     - chromium-browser
     - unclutter
     - ttf-mscorefonts-installer
+    - cabextract
+    - fontconfig
+
+- name: Make dir for fonts
+  file:
+    path: /home/pi/.fonts
+    state: directory
+    mode: 0755
+    owner: pi
+    group: pi
+
+- name: Install Cleartype fonts
+  shell: wget -qO- http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer | bash
 
 - name: Clean old Chrome installs
   lineinfile:
