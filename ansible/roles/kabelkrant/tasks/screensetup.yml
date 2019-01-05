@@ -3,3 +3,12 @@
   lineinfile:
     path: /boot/config.txt
     line: "disable_overscan=1"
+
+- name: Disable screensaver
+  lineinfile:
+    path: /etc/xdg/lxsession/LXDE-pi/autostart
+    line: "{{ item }}"
+  with_items:
+    - "@xset s noblank"
+    - "@xset s off"
+    - "@xset -dpms"
